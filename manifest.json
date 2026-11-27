@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "kind": "vanta-standard-text",
-  "sequence": 1,
-  "issuedAt": "2026-11-27T05:51:39.000Z",
-  "expiresAt": "2026-12-04T05:51:39.000Z",
-  "bytes": 3799384,
-  "sha256": "aca6bd5cdf93e52dbec294cca19b740ae47f6827b42f260f3139e0ad3d323a25",
+  "sequence": 2,
+  "issuedAt": "2026-11-27T06:16:56.000Z",
+  "expiresAt": "2026-12-04T06:16:56.000Z",
+  "bytes": 3799543,
+  "sha256": "c95e2e781e44b174652b02b117b12be0246e718604d32e9def267fad33b62214",
   "format": "VANTA-FILTER-TEXT-1",
-  "packageSha256": "a89c4dcab2cf9bb9ed662ad45a4325edbafe3a0c535de36c5aa431a7c585d953",
+  "packageSha256": "ce520befa2616b2f08706c9d1126fed9039f0218fa922851c39ec99ea52210c0",
   "channel": "filters-test",
   "attribution": "The EasyList authors (https://easylist.to/)",
   "license": "CC-BY-SA-3.0; see LICENSE-EasyList.txt and upstream per-file notices",
-  "sourceSeedSha256": "b0b4d51fae2d90a49669728efae9b09cb4bd151b4d40441236741c61fad8453a",
-  "baselineSha256": "d36305519d5de07e14d9747417ac39c28fd96f5f98feae102e105a915f17f4cc",
+  "sourceSeedSha256": "63ab3b6f6ce6bbfe681d8297bc7d3541831104939fa6e0895ad820935f12daa6",
+  "baselineSha256": "0434e5422d3cb8e418f3a3ead8e0d4eab826d8b0bd426cefc89dfc74d9402cea",
   "sources": [
     {
       "id": "easylist",
       "url": "https://easylist.to/easylist/easylist.txt",
-      "modified": "Fri, 27 Nov 2026 05:42:29 GMT",
-      "bytes": 2084715,
-      "sha256": "db24a47e77041ecba11fb7d95fd9341e7978d1ae181e49d8ea65d5a3e28a3532",
-      "retained": 78705,
+      "modified": "Fri, 27 Nov 2026 06:06:33 GMT",
+      "bytes": 2084874,
+      "sha256": "280adea68541e98233359911598a73a78b6520a9c1a04a20872e8a19e5a20add",
+      "retained": 78712,
       "validation": {
-        "lf": 79282,
+        "lf": 79289,
         "crlf": 0,
         "bom": false,
         "conditionalExcluded": 0,
@@ -32,7 +32,7 @@
         "maxRuleBytes": 4316
       },
       "license": "GPL-3.0-or-later OR CC-BY-SA-3.0-or-later; see upstream per-file notices",
-      "revision": "dcdd0b568a75eee238fdbe2d75dc16d4bbaba420",
+      "revision": "0c4c10bf4752123fe9d17520f6b0aa2b971ed259",
       "notices": [
         "! Licence: https://easylist.to/pages/licence.html"
       ]
@@ -40,9 +40,9 @@
     {
       "id": "easyprivacy",
       "url": "https://easylist.to/easylist/easyprivacy.txt",
-      "modified": "Fri, 27 Nov 2026 05:50:05 GMT",
+      "modified": "Fri, 27 Nov 2026 06:06:33 GMT",
       "bytes": 1523475,
-      "sha256": "d175fabc443a545d3faf2aa9db60408ba569640976a0e65d7b9889d4361e07b3",
+      "sha256": "77c497943c694abfd9e6f805d0b620e65a9b8f994a512c44c0d3bb4048fcdfef",
       "retained": 56801,
       "validation": {
         "lf": 57649,
@@ -55,7 +55,7 @@
         "maxRuleBytes": 6520
       },
       "license": "GPL-3.0-or-later OR CC-BY-SA-3.0-or-later; see upstream per-file notices",
-      "revision": "850f79709a3adb4e597207d6694a6985a6a7b428",
+      "revision": "0c4c10bf4752123fe9d17520f6b0aa2b971ed259",
       "notices": [
         "! Licence: https://easylist.to/pages/licence.html"
       ]
@@ -86,47 +86,19 @@
   ],
   "baselineExclusions": [
     {
-      "line": 68851,
+      "line": 68858,
       "reason": "baseline-profile"
     },
     {
-      "line": 69967,
+      "line": 69974,
       "reason": "baseline-profile"
     },
     {
-      "line": 74290,
-      "reason": "baseline-profile"
-    },
-    {
-      "line": 76465,
-      "reason": "baseline-profile"
-    },
-    {
-      "line": 76470,
-      "reason": "baseline-profile"
-    },
-    {
-      "line": 76471,
+      "line": 74297,
       "reason": "baseline-profile"
     },
     {
       "line": 76472,
-      "reason": "baseline-profile"
-    },
-    {
-      "line": 76473,
-      "reason": "baseline-profile"
-    },
-    {
-      "line": 76474,
-      "reason": "baseline-profile"
-    },
-    {
-      "line": 76475,
-      "reason": "baseline-profile"
-    },
-    {
-      "line": 76476,
       "reason": "baseline-profile"
     },
     {
@@ -226,31 +198,31 @@
       "reason": "baseline-profile"
     },
     {
-      "line": 77940,
+      "line": 76501,
       "reason": "baseline-profile"
     },
     {
-      "line": 77941,
+      "line": 76502,
       "reason": "baseline-profile"
     },
     {
-      "line": 77942,
+      "line": 76503,
       "reason": "baseline-profile"
     },
     {
-      "line": 77943,
+      "line": 76504,
       "reason": "baseline-profile"
     },
     {
-      "line": 77944,
+      "line": 76505,
       "reason": "baseline-profile"
     },
     {
-      "line": 77945,
+      "line": 76506,
       "reason": "baseline-profile"
     },
     {
-      "line": 77946,
+      "line": 76507,
       "reason": "baseline-profile"
     },
     {
@@ -286,41 +258,69 @@
       "reason": "baseline-profile"
     },
     {
-      "line": 96895,
+      "line": 77955,
       "reason": "baseline-profile"
     },
     {
-      "line": 138090,
+      "line": 77956,
       "reason": "baseline-profile"
     },
     {
-      "line": 138091,
+      "line": 77957,
       "reason": "baseline-profile"
     },
     {
-      "line": 141115,
+      "line": 77958,
       "reason": "baseline-profile"
     },
     {
-      "line": 141203,
+      "line": 77959,
       "reason": "baseline-profile"
     },
     {
-      "line": 141204,
+      "line": 77960,
       "reason": "baseline-profile"
     },
     {
-      "line": 141205,
+      "line": 77961,
       "reason": "baseline-profile"
     },
     {
-      "line": 141206,
+      "line": 96902,
       "reason": "baseline-profile"
     },
     {
-      "line": 141207,
+      "line": 138097,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 138098,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141122,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141210,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141211,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141212,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141213,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141214,
       "reason": "baseline-profile"
     }
   ],
-  "workflowCommit": "c526e28f399d664218f07d59f5f24db63fb91965"
+  "workflowCommit": "b223e5ddadb5ad40a33f273621c2e388d7d14438"
 }
