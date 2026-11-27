@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const crypto = require('node:crypto');
-const { planUpdate, publishFiles, github, prepare } = require('./pipeline.cjs');
+const { planUpdate, publishFiles, github, prepare, readPredecessor, validateSigned } = require('./pipeline.cjs');
 const { makePackage, verifyPackage, configHeader } = require('./vfu.cjs');
 const { sha256 } = require('./seed.cjs');
 
@@ -74,7 +74,7 @@ test('API uses only canonical HTTPS, forbids redirects and bounds the existing p
     assert.equal(options.redirect, 'error');
     return new Response(Buffer.alloc(8 * 1024 * 1024 + 257));
   });
-  await assert.rejects(() => api('/contents/filters.vfu', { raw: true }), /exceeds native limit/);
+  await assert.rejects(() => api('/contents/filters.vfu', { raw: true }), /exceeds byte limit/);
 });
 
 test('fetches only fixed sources, records provenance and rejects an invalid source', async () => {
@@ -106,4 +106,54 @@ test('fetches only fixed sources, records provenance and rejects an invalid sour
     globalThis.fetch = oldFetch;
     fs.rmSync(directory, { recursive: true, force: true });
   }
+});
+
+test('reads commit-pinned predecessor via Base64 Git Blob and verifies manifest digest', async () => {
+  const key = crypto.generateKeyPairSync('ed25519');
+  const pkg = makePackage(rules, key.privateKey, 1, now, now + 3600);
+  const head = 'b'.repeat(40);
+  const sha = crypto.createHash('sha1').update('blob ' + pkg.length + '\0').update(pkg).digest('hex');
+  const encoded = pkg.toString('base64').match(/.{1,60}/g).join('\n');
+  const metadata = { type: 'file', path: 'filters.vfu', size: pkg.length, sha, content: '', encoding: 'none' };
+  const manifest = { schema: 1, kind: 'vanta-standard-text', channel: 'filters-test', packageSha256: sha256(pkg) };
+  const calls = [];
+  let blob = { sha, size: pkg.length, encoding: 'base64', content: encoded };
+  const api = async (route, options) => {
+    calls.push(route);
+    if (route === '/contents/filters.vfu?ref=' + head) {
+      assert.equal(options.accept, 'application/vnd.github.object+json');
+      return metadata;
+    }
+    if (route === '/git/blobs/' + sha) return blob;
+    if (route === '/contents/manifest.json?ref=' + head) return Buffer.from(JSON.stringify(manifest));
+    assert.fail(route);
+  };
+  const previous = await readPredecessor(api, 'filters-test', head);
+  assert.deepEqual(previous.bytes, pkg);
+  assert.equal(validateSigned('Predecessor', previous.bytes, key.publicKey, 0, now).sequence, 1);
+  assert.deepEqual(calls, ['/contents/filters.vfu?ref=' + head, '/git/blobs/' + sha,
+    '/contents/manifest.json?ref=' + head]);
+  manifest.packageSha256 = '0'.repeat(64);
+  await assert.rejects(() => readPredecessor(api, 'filters-test', head), /published manifest/);
+  blob = { ...blob, encoding: 'utf-8' };
+  await assert.rejects(() => readPredecessor(api, 'filters-test', head), /Blob API metadata/);
+  blob = { ...blob, encoding: 'base64', content: '@' + encoded.slice(1) };
+  await assert.rejects(() => readPredecessor(api, 'filters-test', head), /Invalid Git Blob Base64/);
+  const wrong = Buffer.from(pkg);
+  wrong[wrong.length - 1] ^= 1;
+  blob = { ...blob, content: wrong.toString('base64') };
+  await assert.rejects(() => readPredecessor(api, 'filters-test', head), /object ID mismatch/);
+});
+
+test('distinguishes predecessor and new candidate signature failures and retains sequence floor', () => {
+  const key = crypto.generateKeyPairSync('ed25519');
+  const old = makePackage(rules, key.privateKey, 1, now, now + 3600);
+  const next = makePackage(rules, key.privateKey, 2, now, now + 3600);
+  const wrongKey = crypto.generateKeyPairSync('ed25519').publicKey;
+  assert.throws(() => validateSigned('Predecessor', old, wrongKey, 0, now, { installed: true }),
+    /Predecessor verification failed: Invalid signature/);
+  assert.throws(() => validateSigned('New candidate', next, wrongKey, 1, now),
+    /New candidate verification failed: Invalid signature/);
+  assert.throws(() => validateSigned('New candidate', old, key.publicKey, 1, now),
+    /New candidate verification failed: Rejected sequence/);
 });
