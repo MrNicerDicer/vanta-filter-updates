@@ -1,0 +1,326 @@
+{
+  "schema": 1,
+  "kind": "vanta-standard-text",
+  "sequence": 1,
+  "issuedAt": "2026-11-27T05:51:39.000Z",
+  "expiresAt": "2026-12-04T05:51:39.000Z",
+  "bytes": 3799384,
+  "sha256": "aca6bd5cdf93e52dbec294cca19b740ae47f6827b42f260f3139e0ad3d323a25",
+  "format": "VANTA-FILTER-TEXT-1",
+  "packageSha256": "a89c4dcab2cf9bb9ed662ad45a4325edbafe3a0c535de36c5aa431a7c585d953",
+  "channel": "filters-test",
+  "attribution": "The EasyList authors (https://easylist.to/)",
+  "license": "CC-BY-SA-3.0; see LICENSE-EasyList.txt and upstream per-file notices",
+  "sourceSeedSha256": "b0b4d51fae2d90a49669728efae9b09cb4bd151b4d40441236741c61fad8453a",
+  "baselineSha256": "d36305519d5de07e14d9747417ac39c28fd96f5f98feae102e105a915f17f4cc",
+  "sources": [
+    {
+      "id": "easylist",
+      "url": "https://easylist.to/easylist/easylist.txt",
+      "modified": "Fri, 27 Nov 2026 05:42:29 GMT",
+      "bytes": 2084715,
+      "sha256": "db24a47e77041ecba11fb7d95fd9341e7978d1ae181e49d8ea65d5a3e28a3532",
+      "retained": 78705,
+      "validation": {
+        "lf": 79282,
+        "crlf": 0,
+        "bom": false,
+        "conditionalExcluded": 0,
+        "resourceExcluded": 299,
+        "proceduralExcluded": 0,
+        "aboveOldLimit": 1,
+        "maxRuleBytes": 4316
+      },
+      "license": "GPL-3.0-or-later OR CC-BY-SA-3.0-or-later; see upstream per-file notices",
+      "revision": "dcdd0b568a75eee238fdbe2d75dc16d4bbaba420",
+      "notices": [
+        "! Licence: https://easylist.to/pages/licence.html"
+      ]
+    },
+    {
+      "id": "easyprivacy",
+      "url": "https://easylist.to/easylist/easyprivacy.txt",
+      "modified": "Fri, 27 Nov 2026 05:50:05 GMT",
+      "bytes": 1523475,
+      "sha256": "d175fabc443a545d3faf2aa9db60408ba569640976a0e65d7b9889d4361e07b3",
+      "retained": 56801,
+      "validation": {
+        "lf": 57649,
+        "crlf": 0,
+        "bom": false,
+        "conditionalExcluded": 0,
+        "resourceExcluded": 67,
+        "proceduralExcluded": 4,
+        "aboveOldLimit": 1,
+        "maxRuleBytes": 6520
+      },
+      "license": "GPL-3.0-or-later OR CC-BY-SA-3.0-or-later; see upstream per-file notices",
+      "revision": "850f79709a3adb4e597207d6694a6985a6a7b428",
+      "notices": [
+        "! Licence: https://easylist.to/pages/licence.html"
+      ]
+    },
+    {
+      "id": "easylistgermany",
+      "url": "https://easylist.to/easylistgermany/easylistgermany.txt",
+      "modified": "Fri, 20 Nov 2026 17:05:36 GMT",
+      "bytes": 282283,
+      "sha256": "606c5fd1797fa134f4b514160fb75161a861367d8eecc1b70d6d5566a50423d1",
+      "retained": 5917,
+      "validation": {
+        "lf": 6101,
+        "crlf": 0,
+        "bom": false,
+        "conditionalExcluded": 0,
+        "resourceExcluded": 130,
+        "proceduralExcluded": 0,
+        "aboveOldLimit": 0,
+        "maxRuleBytes": 1159
+      },
+      "license": "GPL-3.0-or-later OR CC-BY-SA-3.0-or-later; see upstream per-file notices",
+      "revision": "10d2f007ceca7a4abc5c3abe246e85445d8ff5d4",
+      "notices": [
+        "! Licence: https://easylist.to/pages/licence.html"
+      ]
+    }
+  ],
+  "baselineExclusions": [
+    {
+      "line": 68851,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 69967,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 74290,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76465,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76470,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76471,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76472,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76473,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76474,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76475,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76476,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76477,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76478,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76479,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76480,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76481,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76482,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76483,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76484,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76485,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76486,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76487,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76488,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76489,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76490,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76491,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76492,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76493,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76494,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76495,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76496,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76497,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76498,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76499,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 76500,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77940,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77941,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77942,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77943,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77944,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77945,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77946,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77947,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77948,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77949,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77950,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77951,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77952,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77953,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 77954,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 96895,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 138090,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 138091,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141115,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141203,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141204,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141205,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141206,
+      "reason": "baseline-profile"
+    },
+    {
+      "line": 141207,
+      "reason": "baseline-profile"
+    }
+  ],
+  "workflowCommit": "c526e28f399d664218f07d59f5f24db63fb91965"
+}
