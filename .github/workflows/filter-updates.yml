@@ -1,0 +1,64 @@
+name: Validate and publish signed filter data
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Validate only, publish production, or publish a test sequence
+        type: choice
+        options: [validate, production, test-one, test-two]
+        default: validate
+  schedule:
+    - cron: '23 */6 * * *'
+
+permissions: {}
+
+concurrency:
+  group: vanta-filter-publication
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.repository == 'MrNicerDicer/vanta-filter-updates' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' && inputs.mode == 'validate'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: node --test scripts/*.test.cjs
+      - run: node scripts/pipeline.cjs prepare
+
+  publish:
+    if: >-
+      github.repository == 'MrNicerDicer/vanta-filter-updates' && github.ref == 'refs/heads/main' &&
+      ((github.event_name == 'schedule' && vars.PUBLISH_FILTERS == 'true') ||
+       (github.event_name == 'workflow_dispatch' &&
+        (inputs.mode == 'production' || inputs.mode == 'test-one' || inputs.mode == 'test-two')))
+    environment: ${{ (inputs.mode == 'test-one' || inputs.mode == 'test-two') && 'filter-development' || 'filter-production' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: node --test scripts/*.test.cjs
+      - run: node scripts/pipeline.cjs prepare
+      - run: node scripts/pipeline.cjs publish
+        env:
+          VANTA_MODE: ${{ github.event_name == 'schedule' && 'production' || inputs.mode }}
+          VANTA_FILTER_SIGNING_KEY: ${{ secrets.VANTA_FILTER_SIGNING_KEY }}
+          VANTA_FILTER_PUBLIC_KEY: ${{ vars.VANTA_FILTER_PUBLIC_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}

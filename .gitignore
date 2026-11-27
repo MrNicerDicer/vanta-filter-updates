@@ -1,0 +1,7 @@
+.vanta-staging/
+*.pem
+*.key
+*.pfx
+*.p12
+*.vfu
+.env
